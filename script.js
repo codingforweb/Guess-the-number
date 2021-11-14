@@ -21,6 +21,7 @@ function scoreCountFunc() {
   } else {
     msgTxt('You are lost!');
     score.textContent = 0;
+    document.querySelector('body').style.backgroundColor = '#fd7c84';
   }
 }
 function msgTxt(message) {
@@ -33,7 +34,7 @@ buttonCheck.addEventListener('click', function () {
   } else if (guess.value == randomFinNum) {
     msgTxt('Winner');
     randomNum.textContent = randomFinNum;
-    document.body.style.background = 'green';
+    document.body.style.background = '#a8d06f';
     randomNum.style.width = '20rem';
     //highscore block
     if (highScr < scoreCount) {
