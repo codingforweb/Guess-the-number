@@ -17,22 +17,25 @@ function scoreCountFunc() {
   if (scoreCount > 1) {
     scoreCount--;
     score.textContent = scoreCount;
-    msg.textContent = guess.value < randomFinNum ? 'To Low' : 'To High';
+    msgTxt(guess.value < randomFinNum ? 'To Low' : 'To High');
   } else {
-    msg.textContent = 'Yor are lost';
+    msgTxt('You are lost!');
     score.textContent = 0;
   }
+}
+function msgTxt(message) {
+  msg.textContent = message;
 }
 
 buttonCheck.addEventListener('click', function () {
   if (!guess.value || guess.value == 0) {
-    msg.textContent = "It's not a number";
+    msgTxt("It's not a number");
   } else if (guess.value == randomFinNum) {
-    msg.textContent = 'Winner';
+    msgTxt('Winner');
     randomNum.textContent = randomFinNum;
     document.body.style.background = 'green';
     randomNum.style.width = '20rem';
-    //highscore
+    //highscore block
     if (highScr < scoreCount) {
       highScr = scoreCount;
       highscore.textContent = highScr;
@@ -49,7 +52,7 @@ buttonAgain.addEventListener('click', function () {
   randomFinNum = Math.round(Math.random() * 19 + 1);
   console.log(randomFinNum);
   guess.value = '';
-  msg.textContent = 'Start guessing...';
+  msgTxt('Start Guessing...');
   document.body.removeAttribute('style');
   randomNum.removeAttribute('style');
   randomNum.textContent = '?';
